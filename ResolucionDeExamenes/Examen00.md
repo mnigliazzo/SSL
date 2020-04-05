@@ -70,7 +70,7 @@
 
 *Diagrama de Flujo:*
 
-![Diagrama](/Diagrama.jpg)
+![Diagrama](./Diagrama.jpg)
 
 *Codificación:*
 
