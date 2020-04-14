@@ -86,4 +86,4 @@
       r=s/n;
       return r;
     }
-  El algoritmo solo funciona con una cadena no vacias, en caso de que se envie una cadena vacia dará error.
+  El algoritmo solo funciona con una cadena no vacia, en caso de que se envie una cadena vacia dará error.
