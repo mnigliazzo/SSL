@@ -18,8 +18,9 @@
    * Análisis de Sistemas
    * Diseño de Sistemas
    * Administración de Recursos
+   * Proyecto Final
 
-5. El paradigma de programación que se aplicó en el primer año de la carrera es el estructurado.
+5. El paradigma de programación que se aplicó en el primer año de la carrera es el procedural.
 
 6. La abstracción es representar una expresión en una forma descriptiva, permitiendo descomponer el problema a resolver.
 
@@ -45,24 +46,24 @@
 
 1. Un algoritmo es una secuencia de instrucciones la cual permite resolver un problema.
 
-2. La programación estructurada es un paradigma de programación que esta orientado a la claridad y utilizan solamente estructuras lógicas de control (secuencia, selección e interacción).
+2. La programación estructurada es un paradigma de programación que esta orientado a la claridad y utilizan solamente estructuras lógicas de control (secuencia, selección e iteración).
 
 3. Tres estructuras de control de flujo de ejecución pueden ser:
-   * IF
-   * DO-WHILE
-   * WHILE
+   * Secuencia
+   * Selección
+   * Iterativa
 
 4. La diferencia entre argumento y parámetro es que el parámetro representa el valor que  espera procedimiento, mientras que el argumento es el valor que se le pasa al procedimiento al llamarse
 
 5. Algunos ejemplos de las formas de transferencia de argumentos son:
-   * Valor: se le indica el contenido de la variable.
+   * Valor/copia: se le indica el contenido del argumento.
    * Referencia: se le indica una dirección de memoria donde se encuentra el dato
 
 6. Un parámetro en entrada es aquel parámetro que espera que se le ingrese al procedimiento, mientras que el de salida es el que devuelve luego de la ejecución. Por otra parte los de entrada/salida, son los que el procedimiento recibe y por el mismo parámetro devuelve el resultado luego de la ejecución
 
 7. Un tipo de dato abstracto es un modelo en el cual encapsula cierto tipo de dato (entero, flotante, etc.) y tiene una serie de operaciones que se encuentran definidas para ese modelo. Un ejemplo de un tipo de dato abstracto es una lista.
 
-8. La diferencia entre colas y listas es en como se agregan y quitan elementos. En las pilas se usa LIFO (last in first out) y en colas se usa FIFO (first in firs out)
+8. La diferencia entre colas y pilas es en como se agregan y quitan elementos de la estrutura de dato. En las pilas se usa LIFO (last in first out, lo ultimo en entrar es lo primero en salir) y en colas se usa FIFO (first in first out, lo primero en entrar es lo primero en salir)
 
 9. Los archivos son un tipo de estructura de datos que persisten en memoria.
 
@@ -85,3 +86,4 @@
       r=s/n;
       return r;
     }
+  El algoritmo solo funciona con una cadena no vacias, en caso de que se envie una cadena vacia dará error.
