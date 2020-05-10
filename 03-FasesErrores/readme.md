@@ -30,7 +30,7 @@
 
 1. Investigar las funcionalidades y opciones que su compilador presenta para limitar el inicio y fin de las fases de traducción.
 2. Para la siguiente secuencia de pasos:
-    a. Transicribir en readme.md cada comando ejecutado y
+    a. Transcribir en readme.md cada comando ejecutado y
     b. Describir en readme.md el resultado u error obtenidos para cada paso
 
 ### Restricciones
@@ -66,7 +66,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
 
     Sentencia: `gcc hello2.c -std=c18 -E -o hello2.i`
 
-    Genera un nuevo archivo con el programa preprocesado, reemplazando el  `#include <stdio.h>` por lo que se encuentra en el archivo stdio.h. Tambien reemplaza los comentarios por un espacio.
+    Genera un nuevo archivo con el programa preprocesado, reemplazando el  `#include <stdio.h>` por lo que se encuentra en el archivo stdio.h. También reemplaza los comentarios por un espacio.
 
 3. Escribir hello3.c, una nueva variante:
    
@@ -78,13 +78,13 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
 
 4. Investigar la semántica de la primera línea.
 
-    Declara el prototipo de la funcion `printf`. Indicando los parametros que recibirá
+    Declara el prototipo de la función `printf`. Indicando los parámetros que recibirá
 
 5. Preprocesar hello3.c, no compilar, y generar hello3.i. Buscar diferencias entre hello3.c y hello3.i
 
     Sentencia: `gcc hello3.c -std=c18 -E -o hello3.i`
 
-    Lo unico que difiere es que agrega etiquetas del programa (no agrega ninguna biblioteca)
+    Lo único que difiere es que agrega etiquetas del programa (no agrega ninguna biblioteca)
 
 6. Compilar el resultado y generar hello3.s, no ensamblar
 
@@ -98,7 +98,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
                   |  printf
             hello3.c:9:2: error: expected declaration or statement at end of input
 
-    Al compilar, detecta una advertencia de sintaxis `prontf` sugiriendo la modificacion a `printf`. Ademas existe un error, la cual no cierra la llave del main. por lo que no genera hello3.s
+    Al compilar, detecta una advertencia de sintaxis `prontf` sugiriendo la modificación a `printf`. Además existe un error, la cual no cierra la llave del main. por lo que no genera hello3.s
 
 7. Corregir en el nuevo archivo hello4.c y empezar de nuevo, generar hello4.s, no ensamblar.
 
@@ -112,7 +112,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
                   |  ^~~~~~
                   |  printf
       
-    Se corrigio solo el error de la llave. Al compilar detecta una advertencia para `prontf`.
+    Se corrigió solo el error de la llave. Al compilar detecta una advertencia para `prontf`.
 
 8. Investigar hello4.s
 
@@ -122,7 +122,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
 
     Sentencia: `as hello4.s -o hello4.o`
     
-    Genera el Codigo Maquina del programa hello4.c
+    Genera el Código Maquina del programa hello4.c
 
 10. Vincular hello4.o con la biblioteca estándar y generar el ejecutable.
 
@@ -132,7 +132,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
             c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: hello4.o:hello4.c:(.text+0x1e): undefined reference to `prontf'
             collect2.exe: error: ld returned 1 exit status
 
-    Se vincula el programa en lenguaje maquina con la libreria stdio que tiene definida la funcion printf. Cuando se genera el ejecutable falla ya que no la advertencia que antes indicaba de `prontf` no puede referenciarla con ninguna función.
+    Se vincula el programa en lenguaje maquina con la biblioteca stdio que tiene definida la función printf. Cuando se genera el ejecutable, falla ya que no la advertencia que antes indicaba de `prontf` no puede referenciarla con ninguna función.
 
 11. Corregir en hello5.c y generar el ejecutable.
 
@@ -150,7 +150,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
             $ ./hello5.exe
             La respuesta es 4200688
 
-    La correccion que se hizo fue `prontf` a `printf`, genera el Ejecutable sin errores ni advertencias. Al momento de visualizar el resultado por consola se visualiza un numero incorrecto por que no se pasó la varible i a printf. Este número corresponde al valor de inicio del stack según lo que se observa en hello5.s
+    La corrección que se hizo fue `prontf` a `printf`, genera el Ejecutable sin errores ni advertencias. Al momento de visualizar el resultado por consola se visualiza un numero incorrecto porque no se pasó la variable i a printf. Este número corresponde al valor de inicio del stack según lo que se observa en hello5.s
 
 13. Corregir en hello6.c y empezar de nuevo.
 
@@ -165,7 +165,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
     
     Sentencia que genera el ejecutable directamente: `gcc hello6.c -std=c18 -o hello6.exe`
 
-    Al generar el ejecutable no figura ningun error ni advertencia, el progama imprime el valor 42 ya que se lo pasá como argumento en el printf
+    Al generar el ejecutable no figura ningún error ni advertencia, el programa imprime el valor 42 ya que se lo pasa como argumento en el printf
 
 14. Escribir hello7.c, una nueva variante:
 
@@ -195,4 +195,4 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
     
     Sentencia que genera el ejecutable directamente: `gcc hello7.c -std=c18 -o hello7.exe`
     
-    El programa funciona ya que el compilador cuando realiza la vinculación, vincula siempre con las biblioteca estandar, identificando asi la función printf, por mas que indique una advertencia. En la fase de compilación genera el warning de que no reconoce la función printf.
+    El programa funciona ya que el compilador cuando realiza la vinculación, vincula siempre con las biblioteca estándar, identificando así la función printf, por más que indique una advertencia. En la fase de compilación genera el warning de que no reconoce la función printf.
