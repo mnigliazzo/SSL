@@ -78,13 +78,13 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
 
 4. Investigar la semántica de la primera línea.
 
-    Declara el prototipo de la función `printf`. Indicando los parámetros que recibirá
+    Declara el prototipo de la función `printf`. Indicando los parámetros que recibirá y devolverá. Devuelve un entero y recibe un puntero de caracteres.
 
 5. Preprocesar hello3.c, no compilar, y generar hello3.i. Buscar diferencias entre hello3.c y hello3.i
 
     Sentencia: `gcc hello3.c -std=c18 -E -o hello3.i`
 
-    Lo único que difiere es que agrega etiquetas del programa (no agrega ninguna biblioteca)
+    Lo único que difiere es que agrega anotaciones  al programa del preprocesador (no agrega ninguna biblioteca)
 
 6. Compilar el resultado y generar hello3.s, no ensamblar
 
@@ -98,7 +98,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
                   |  printf
             hello3.c:9:2: error: expected declaration or statement at end of input
 
-    Al compilar, detecta una advertencia de sintaxis `prontf` sugiriendo la modificación a `printf`. Además existe un error, la cual no cierra la llave del main. por lo que no genera hello3.s
+    Al compilar, detecta una advertencia de sintaxis `prontf` sugiriendo la modificación a `printf`. Además existe un error (sintáctico), la cual no cierra la llave del main. por lo que no genera hello3.s
 
 7. Corregir en el nuevo archivo hello4.c y empezar de nuevo, generar hello4.s, no ensamblar.
 
@@ -141,7 +141,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
             $ gcc hello5.c -std=c18 -E -o hello5.i
             $ gcc hello5.i -std=c18 -S -o hello5.s
             $ as hello5.s -o hello5.o
-            $ gcc hello5.o -L/c:/MinGW/include/stdio.h -o hello5.exe
+            $ gcc hello5.o -o hello5.exe
           
     Sentencia que genera el ejecutable directamente: `gcc hello5.c -std=c18 -o hello5.exe`
 
@@ -150,7 +150,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
             $ ./hello5.exe
             La respuesta es 4200688
 
-    La corrección que se hizo fue `prontf` a `printf`, genera el Ejecutable sin errores ni advertencias. Al momento de visualizar el resultado por consola se visualiza un numero incorrecto porque no se pasó la variable i a printf. Este número corresponde al valor de inicio del stack según lo que se observa en hello5.s
+    La corrección que se hizo fue `prontf` a `printf`, genera el Ejecutable sin errores ni advertencias. Al momento de visualizar el resultado por consola se visualiza un numero incorrecto porque no se pasó la variable i a printf. Este número corresponde al valor de inicio del stack según lo que se observa en hello5.s. Esto corresponde a un error prágmatico.
 
 13. Corregir en hello6.c y empezar de nuevo.
 
@@ -159,7 +159,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
             $ gcc hello6.c -std=c18 -E -o hello6.i
             $ gcc hello6.i -std=c18 -S -o hello6.s
             $ as hello6.s -o hello6.o
-            $ gcc hello6.o -L/c:/MinGW/include/stdio.h -o hello6.exe
+            $ gcc hello6.o -o hello6.exe
             $ ./hello6.exe
             La respuesta es 42
     
@@ -189,7 +189,7 @@ Generar los archivos del preprocesador y ver como se modifican con respecto a la
               +++ |+#include <stdio.h>
                 1 | /* hello7.c
             $ as hello7.s -o hello7.o
-            $ gcc hello7.o -L/c:/MinGW/include/stdio.h -o hello7.exe
+            $ gcc hello7.o -o hello7.exe
             $ ./hello7.exe
             La respuesta es 42
     
