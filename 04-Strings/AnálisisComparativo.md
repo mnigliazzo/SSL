@@ -14,7 +14,7 @@ e. ¿El tipo tiene mutabilidad o es inmutable? Tiene Mutabilidad
 
 f. ¿El tipo es un first class citizen? **No**
 
-g. ¿Cuál es la mecánica para ese tipo cuando se los pasa como argumentos? Para enviar como argumento se envia el puntero. que indica la primer posición de la cadena
+g. ¿Cuál es la mecánica para ese tipo cuando se los pasa como argumentos? Para enviar como argumento se envia el puntero. Indicando la primer posición de la cadena
 
 h. ¿Y cuando son retornados por una función? También se devuelve un puntero 
 
