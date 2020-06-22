@@ -34,16 +34,17 @@ char* Potenciar(char* A,int n){
     int a=0;
     int largoPotenciado =GetLongitud(A)*n+1;
     char * copiaA= malloc(GetLongitud(A));
-    copiaA=A;
-
     char* B= malloc(largoPotenciado);
-    for (i=0;i<n;i++){
-        for (j=a;*copiaA!='\0';j++){
-            B[j]=*copiaA;
-            copiaA++;
+    copiaA=A;
+    if (n==0){ 
+        for (i=0;i<n;i++){
+            for (j=a;*copiaA!='\0';j++){
+                B[j]=*copiaA;
+                copiaA++;
+            }
+            copiaA=A;
+            a=j;
         }
-        copiaA=A;
-        a=j;
     }
     B[a]='\0';
     return B;
