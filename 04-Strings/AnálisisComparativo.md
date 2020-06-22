@@ -8,7 +8,7 @@ b. ¿El tipo es parte de la biblioteca? **No** existe el tipo en C pero existe f
 
 c. ¿Qué alfabeto usa? UTF-8 (Unicode)
 
-d. ¿Cómo se resuelve la alocación de memoria? Puede ser a traves de un array de tamaño fijo (estatico), o por medio de un puntero de forma dinamica con la funcion `malloc` . Y se almacenan en el Stack
+d. ¿Cómo se resuelve la alocación de memoria? Puede ser a traves de un array de tamaño fijo (estatico) almacenando en el Stack, o por medio de un puntero de forma dinamica con la funcion `malloc`  y se almacenan en el Heap
 
 e. ¿El tipo tiene mutabilidad o es inmutable? Tiene Mutabilidad
 
