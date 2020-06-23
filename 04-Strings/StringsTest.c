@@ -35,14 +35,11 @@ int main(void)
 
 
     printf ("El potenciado de \"%s\" de %d veces es \"%s\" y mide %d\n",stringHello,cantidadPotenciado,Potenciar(stringHello,cantidadPotenciado),GetLongitud(Potenciar(stringHello,cantidadPotenciado)));
+    assert(GetLongitud(Potenciar(stringHello,cantidadPotenciado))==(GetLongitud(stringHello)*cantidadPotenciado));
 
 
-
-    char * concatenado = malloc (30);
-    concatenado=Concatenar(stringHello,stringPrueba);
-    int b=GetLongitud(concatenado);
-    printf ("La funcion concatenar entre \"%s\" y \"%s\"  \"%s\"\n",stringHello,stringPrueba,concatenado);
-    assert(b==(GetLongitud(stringHello)+GetLongitud(stringPrueba)));
+     printf ("La funcion concatenar entre \"%s\" y \"%s\"  \"%s\"\n",stringHello,stringPrueba,Concatenar(stringHello,stringPrueba));
+     assert(GetLongitud(Concatenar(stringHello,stringPrueba))==(GetLongitud(stringHello)+GetLongitud(stringPrueba)));
 
 }
 

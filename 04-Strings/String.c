@@ -9,13 +9,11 @@
 
 
 
-int GetLongitud(char* A){
+int GetLongitud(const char* A){
     int i;
-    char* C=A;
 
-    if (*C!='\0'){
-        C++;
-        return (1+GetLongitud(C));
+    if (*A!='\0'){
+           return (1+GetLongitud(A+1));
     }
     else{
      return 0;
@@ -23,50 +21,46 @@ int GetLongitud(char* A){
 }
 
 
-int IsVacia(char* A){
+int IsVacia(const char* A){
     return *A=='\0';
 }
 
 
-char* Potenciar(char* A,int n){
-    int i;
-    int j;
+const char* Potenciar(const char* A,int n){
+    int i=0;
+    int j=0;
     int a=0;
-    int largoPotenciado =GetLongitud(A)*n+1;
-    char * copiaA= malloc(GetLongitud(A));
+    int k=0;
+    int largoPotenciado =(GetLongitud(A)*n)+1;
     char* B= malloc(largoPotenciado);
-    copiaA=A;
-    if (n==0){ 
+
+    if (n!=0){ 
         for (i=0;i<n;i++){
-            for (j=a;*copiaA!='\0';j++){
-                B[j]=*copiaA;
-                copiaA++;
-            }
-            copiaA=A;
-            a=j;
+            for (j=0;j<GetLongitud(A);j++){
+                B[k]=A[j];
+                k++;
+            }          
         }
     }
-    B[a]='\0';
+    B[largoPotenciado-1]='\0';
     return B;
 }
 
 
-char* Concatenar (char*A,char*B){
+const char* Concatenar (const char*A,const char*B){
     int largoA=GetLongitud(A);
     int largoB=GetLongitud(B);
-    int largoC=largoA+GetLongitud(B)+1;
+    int largoC=largoA+largoB+1;
+    int j=0;
     char* C= malloc(largoC);
-  
     int i;
     for(i=0;i<largoA;i++){
-        C[i]=*A;
-        A++;
+        C[i]=A[i];
     }
     for(i=largoA;i<largoC;i++){
-        C[i]=*B;
-        B++;
+        C[i]=B[j++];
     }
-    C[i]='\0';
+    C[largoC-1]='\0';
     return C;
 
 }
