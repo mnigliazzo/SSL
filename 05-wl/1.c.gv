@@ -1,0 +1,23 @@
+digraph G {
+    node0[label="||"];
+    node1[label="=="];
+    node2[label="c"];
+    node3[label="' '"];
+    node4[label="=="];
+    node5[label="c"];
+    node6[label="'\\n'"];
+    node7[label="=="];
+    node8[label="c"];
+    node9[label="'\\t'"]
+    node10[label="||"];
+    node0->node1;
+    node0->node10;
+    node1->node2;
+    node1->node3;
+    node4->node5;
+    node4->node6;
+    node10->node7;
+    node10->node4;
+    node7->node8;
+    node7->node9;
+}

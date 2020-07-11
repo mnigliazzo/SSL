@@ -1,0 +1,5 @@
+digraph G {
+    OUT -> OUT [label="c = = ' ' || c = = '\\ n' || c = = '\\t'"];
+    OUT ->  IN[label="not(c = = ' ' || c = = '\\ n' || c = = '\\t')"];
+    IN -> OUT  [label="c = = ' ' || c = = '\\ n' || c = = '\\t'"];
+}
