@@ -36,7 +36,8 @@
    
    ![control](./images/1.c.gif)
 2. Máquina de Estado:
-   1. Describir en lenguaje dot [DOT2015] y dentro del archivo wl.gv la máquina de estado que resuelve el problema planteado.
+   1. Describir en lenguaje dot [DOT2015] y dentro del archivo [wl.gv](./wl.gv) la máquina de estado que resuelve el problema planteado.
+   ![wl.gv](./images/wl.gif)
    2. Formalizar la máquina de estados como una n-upla, basarse en el Capítulo #1 del Volumen #3 de [MUCH2012].
    
       ![M](./images/M.gif)
