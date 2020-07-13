@@ -30,26 +30,26 @@
    1. Estudiar el programa del ejemplo las sección 1.5.4 Conteo de Palabras de [KR1988].
    2. Dibujar el árbol de expresión para la inicialización de los contadores: nl= nw = nc = 0.
 
-   ![inicializacion](./\images/1.b.gif)
+   ![inicializacion](.\images/1.b.gif)
 
    3. Dibujar el árbol de expresión para la expresión de control del segundo if: c == ' ' || c == '\n' || c = '\t'.
    
-   ![control](./\images/1.c.gif)
+   ![control](.\images/1.c.gif)
 2. Máquina de Estado:
    1. Describir en lenguaje dot [DOT2015] y dentro del archivo wl.gv la máquina de estado que resuelve el problema planteado.
    2. Formalizar la máquina de estados como una n-upla, basarse en el Capítulo #1 del Volumen #3 de [MUCH2012].
    
-      ![M](./\images/M.gif)
+      ![M](.\images/M.gif)
 
-      ![Q](./\images/Q.gif)
+      ![Q](.\images/Q.gif)
 
-      ![Sigma](./\images/Sigma.gif)
+      ![Sigma](.\images/Sigma.gif)
 
-      ![q0](./\images/q0.gif)
+      ![q0](.\images/q0.gif)
       
-      ![F](./\images/F.gif)
+      ![F](.\images/F.gif)
       
-      ![T](./\images/T.gif)
+      ![T](.\images/T.gif)
 
 3. Implementaciones de Máquinas de Estado:
 
