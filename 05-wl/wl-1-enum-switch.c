@@ -29,20 +29,24 @@ int main(void)
       case ' ':
       case '\t':
       case '\n':
-        putc('\n', archivoSalida);
+        break;
       default:
         state = IN;
+        putc(c, archivoSalida);
         break;
       }
+      break;
     case IN:
       switch (c)
       {
       case ' ':
       case '\t':
       case '\n':
+        putc('\n', archivoSalida);
+        state = OUT;
         break;
       default:
-        state = OUT;
+        
         putc(c, archivoSalida);
         break;
       }
