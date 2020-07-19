@@ -6,34 +6,46 @@
 #include <stdio.h>
 #include <assert.h>
 
-typedef enum  {IN=1,OUT=0} State;
+typedef enum
+{
+  IN,
+  OUT
+} State;
 
-int main(void){
-    int c,nl,nw,nc;
-    State state;
-    state=OUT;
-    nl=nw=nc=0;
-
-    while ((c=getchar())!=EOF){
-        ++nc;
-        switch (c){
-            case '\n':
-                ++nl;
-                state=OUT;
-            break;
-            case ' ':
-                state=OUT;
-            break;
-            case '\t':
-                state=OUT;
-            break;
-            default:
-                if (state==OUT){
-                    ++nw;
-                    state=IN;
-                }  
-            break;
-        }       
+int main(void)
+{
+  int c;
+  State state = OUT;
+  FILE *archivoSalida, *archivoEntrada;
+  archivoSalida = fopen("salida_wl_1_enum_switch.txt", "w+");
+  archivoEntrada = fopen("entrada_wl.txt", "r");
+  while ((c = fgetc(archivoEntrada)) != EOF)
+  {
+    switch (state)
+    {
+    case OUT:
+      switch (c)
+      {
+      case ' ':
+      case '\t':
+      case '\n':
+        putc('\n', archivoSalida);
+      default:
+        state = IN;
+        break;
+      }
+    case IN:
+      switch (c)
+      {
+      case ' ':
+      case '\t':
+      case '\n':
+        break;
+      default:
+        state = OUT;
+        putc(c, archivoSalida);
+        break;
+      }
     }
-   printf("Line: %d Word: %d Characters: %d\n",nl,nw,nc);
+  }
 }

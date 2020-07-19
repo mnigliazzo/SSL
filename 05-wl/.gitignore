@@ -2,3 +2,4 @@ temp/
 wl-0.*
 *.o
 *.exe
+*.txt

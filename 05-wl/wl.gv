@@ -1,5 +1,10 @@
 digraph G {
+   
+    OUT ->  IN[label="!(c = = ' ' || c = = '\\ n' || c = = '\\t')
+    putc(c)"];
+    IN -> OUT  [label="c = = ' ' || c = = '\\ n' || c = = '\\t'
+    putc('\\n')"];
+    IN -> IN  [label="!(c = = ' ' || c = = '\\ n' || c = = '\\t')
+    putc(c)"];
     OUT -> OUT [label="c = = ' ' || c = = '\\ n' || c = = '\\t'"];
-    OUT ->  IN[label="not(c = = ' ' || c = = '\\ n' || c = = '\\t')"];
-    IN -> OUT  [label="c = = ' ' || c = = '\\ n' || c = = '\\t'"];
 }
