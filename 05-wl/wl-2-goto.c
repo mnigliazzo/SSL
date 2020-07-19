@@ -6,54 +6,40 @@
 #include <stdio.h>
 #include <assert.h>
 
-typedef enum
-{
-  IN,
-  OUT
-} State;
-
 int main()
 {
   int c;
-  State state = OUT;
   FILE *archivoSalida, *archivoEntrada;
   archivoSalida = fopen("salida_wl_2_goto.txt", "w+");
   archivoEntrada = fopen("entrada_wl.txt", "r");
 
 OUT:
-  if ((c = fgetc(archivoEntrada)) != EOF)
+  switch (c = fgetc(archivoEntrada))
   {
-    switch (c)
-    {
-    case ' ':
-    case '\t':
-    case '\n':
-      if (state == OUT)
-      {
-        putc('\n', archivoSalida);
-      }
-    default:
-      state = IN;
-      goto IN;
-    }
-  }
-  else
+  case EOF:
     return 0;
-
-IN:
-  switch (c)
-  {
   case ' ':
   case '\t':
   case '\n':
-    state = IN;
+    goto OUT;
+    break;
+  default:
+    putc(c, archivoSalida);
+    goto IN;
+  }
+
+IN:
+  switch (c = fgetc(archivoEntrada))
+  {
+  case EOF:
+    return 0;
+  case ' ':
+  case '\t':
+  case '\n':
+    putc('\n', archivoSalida);
     goto OUT;
   default:
-    if (state == IN)
-    {
-      putc(c, archivoSalida);
-      state = OUT;
-    }
-    goto OUT;
+    putc(c, archivoSalida);
+    goto IN;
   }
 }
