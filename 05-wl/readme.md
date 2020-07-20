@@ -108,6 +108,7 @@
     La tabla tiene en las filas las cuatro implementación, en las columnas los tres archivos, y en la intersección la duración para una implementación para un archivo.
 
 * Solos valores son en segundos
+
 |Implementación  |1kb  |1mb  |1gb  |
 |---------|---------|---------|---------|
 |wl-1-enum-switch.c     |0         |0.076000         |80.295000         |
