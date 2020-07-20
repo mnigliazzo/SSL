@@ -1,5 +1,6 @@
 digraph G {
-   
+   OUT[label="OUT*"];
+    IN[label="IN"];
     OUT ->  IN[label="!(c = = ' ' || c = = '\\ n' || c = = '\\t')
     putc(c)"];
     IN -> OUT  [label="c = = ' ' || c = = '\\ n' || c = = '\\t'
