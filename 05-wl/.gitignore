@@ -1,4 +1,5 @@
 temp/
+generacionArchivo.*
 wl-0.*
 *.o
 *.exe
