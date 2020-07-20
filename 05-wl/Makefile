@@ -20,6 +20,11 @@ CFLAGS =
 RM = rm -f
 
 all: $(BIN1) $(BIN2) $(BIN3) $(BIN4)
+run: $(BIN1) $(BIN2) $(BIN3) $(BIN4)
+	./$(BIN1)
+	./$(BIN2)
+	./$(BIN3)
+	./$(BIN4)
 
 $(BIN1): $(OBJ1)
 	$(CC) $(OBJ1) -o $(BIN1) $(CFLAGS)
