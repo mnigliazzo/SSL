@@ -116,7 +116,7 @@
 |wl-3-rec.c     |0         |         |         |
 |wl-4.c     |0         |0.082000         |80.721000         |
 
-Para la funcion recursiva se no llega a procesar los archivos de 1mb y 1gb. lo maximo que llego a procesar es un archivo de 44 kb, y demoró 0.005000 segundos
+Para la funcion recursiva no se llega a procesar los archivos de 1mb y 1gb. lo maximo que llego a procesar es un archivo de 44 kb, y demoró 0.005000 segundos
 
 
 ### Restricciones
