@@ -6,8 +6,8 @@
 #include <stdio.h>
 #include <time.h>
 
-void Funcion_IN(FILE *entrada, FILE *salida);
-void Funcion_OUT(FILE *entrada, FILE *salida);
+void Funcion_IN(void);
+void Funcion_OUT(void);
 
 int main()
 {
@@ -15,9 +15,7 @@ int main()
   double cpu_time_used;
   start = clock();
   FILE *archivoSalida, *archivoEntrada;
-  archivoSalida = fopen("salida_wl_3_rec.txt", "w+");
-  archivoEntrada = fopen("entrada_wl.txt", "r");
-  Funcion_OUT(archivoEntrada, archivoSalida);
+  Funcion_OUT();
   end = clock();
   cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
   printf("En wl-3-rec.c demoro: %f\n",cpu_time_used);
@@ -25,39 +23,39 @@ int main()
 
 
 
-void Funcion_OUT(FILE *entrada, FILE *salida)
+void Funcion_OUT(void)
 {
 int c;
-  switch (c= fgetc(entrada))
+  switch (c= getchar())
   {
   case EOF:
     break;
   case ' ':
   case '\t':
   case '\n':
-     Funcion_OUT(entrada, salida);
+     Funcion_OUT();
       break;
   default:
-    putc(c, salida);
-    Funcion_IN(entrada, salida);
+    putchar(c);
+    Funcion_IN();
   }
 }
 
-void Funcion_IN(FILE *entrada, FILE *salida)
+void Funcion_IN(void)
 {
   int c;
-  switch (c= fgetc(entrada))
+  switch (c= getchar())
   {
   case EOF:
     break;
   case ' ':
   case '\t':
   case '\n':
-    putc('\n', salida);
-    Funcion_OUT(entrada, salida);
+    putchar('\n');
+    Funcion_OUT();
     break;
   default:
-    putc(c, salida);
-    Funcion_IN(entrada, salida);
+    putchar(c);
+    Funcion_IN();
   }
 }

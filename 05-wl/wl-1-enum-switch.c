@@ -19,10 +19,7 @@ int main(void)
   start = clock();
   int c;
   State state = OUT;
-  FILE *archivoSalida, *archivoEntrada;
-  archivoSalida = fopen("salida_wl_1_enum_switch.txt", "w+");
-  archivoEntrada = fopen("entrada_wl.txt", "r");
-  while ((c = fgetc(archivoEntrada)) != EOF)
+  while ((c = getchar()) != EOF)
   {
     switch (state)
     {
@@ -35,7 +32,7 @@ int main(void)
         break;
       default:
         state = IN;
-        putc(c, archivoSalida);
+        putchar(c);
         break;
       }
       break;
@@ -45,12 +42,12 @@ int main(void)
       case ' ':
       case '\t':
       case '\n':
-        putc('\n', archivoSalida);
+        putchar('\n');
         state = OUT;
         break;
       default:
         
-        putc(c, archivoSalida);
+        putchar(c);
         break;
       }
     }

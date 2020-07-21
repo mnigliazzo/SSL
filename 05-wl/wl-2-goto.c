@@ -12,12 +12,8 @@ int main()
   double cpu_time_used;
   start = clock();
   int c;
-  FILE *archivoSalida, *archivoEntrada;
-  archivoSalida = fopen("salida_wl_2_goto.txt", "w+");
-  archivoEntrada = fopen("entrada_wl.txt", "r");
-
 OUT:
-  switch (c = fgetc(archivoEntrada))
+  switch (c = getchar())
   {
   case EOF:
     end = clock();
@@ -30,12 +26,12 @@ OUT:
     goto OUT;
     break;
   default:
-    putc(c, archivoSalida);
+    putchar(c);
     goto IN;
   }
 
 IN:
-  switch (c = fgetc(archivoEntrada))
+  switch (c = getchar())
   {
   case EOF:
     end = clock();
@@ -45,10 +41,10 @@ IN:
   case ' ':
   case '\t':
   case '\n':
-    putc('\n', archivoSalida);
+    putchar('\n');
     goto OUT;
   default:
-    putc(c, archivoSalida);
+    putchar(c);
     goto IN;
   }
 

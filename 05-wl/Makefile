@@ -21,10 +21,10 @@ RM = rm -f
 
 all: $(BIN1) $(BIN2) $(BIN3) $(BIN4)
 run: $(BIN1) $(BIN2) $(BIN3) $(BIN4)
-	./$(BIN1)
-	./$(BIN2)
-	./$(BIN3)
-	./$(BIN4)
+	./$(BIN1) <entrada_wl.txt> salida_wl_1_enum_switch.txt
+	./$(BIN2) <entrada_wl.txt> salida_wl_2_goto.txt
+	./$(BIN3) <entrada_wl.txt> salida_wl_3_rec.txt
+	./$(BIN4) <entrada_wl.txt> salida_wl_4.txt
 
 $(BIN1): $(OBJ1)
 	$(CC) $(OBJ1) -o $(BIN1) $(CFLAGS)
