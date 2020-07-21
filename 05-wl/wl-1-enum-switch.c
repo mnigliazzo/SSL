@@ -14,9 +14,6 @@ typedef enum
 
 int main(void)
 {
-  clock_t start=0, end=0;
-  double cpu_time_used;
-  start = clock();
   int c;
   State state = OUT;
   while ((c = getchar()) != EOF)
@@ -52,7 +49,4 @@ int main(void)
       }
     }
   }
-  end = clock();
-  cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-  printf("En wl-1-enum-switch.c demoro: %f\n",cpu_time_used);
 }

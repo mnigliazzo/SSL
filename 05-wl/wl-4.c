@@ -4,7 +4,6 @@
 * Cuando: 20200720
 */
 #include <stdio.h>
-#include <time.h>
 
 void Funcion_X(void);
 void Funcion_PrintChar(int c);
@@ -13,20 +12,14 @@ void Funcion_Null(int c);
 
 typedef enum
 {
-  IN=1,
-  OUT=0
+  IN,
+  OUT
 } State;
 
 
 int main()
 {
-  clock_t start=0, end=0;
-  double cpu_time_used;
-  start = clock();
   Funcion_X();
-  end = clock();
-  cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-  printf("En wl-4.c demoro: %f\n",cpu_time_used);
 }
 
 void Funcion_Null(int c)

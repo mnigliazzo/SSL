@@ -20,11 +20,23 @@ CFLAGS =
 RM = rm -f
 
 all: $(BIN1) $(BIN2) $(BIN3) $(BIN4)
-run: $(BIN1) $(BIN2) $(BIN3) $(BIN4)
-	./$(BIN1) <entrada_wl.txt> salida_wl_1_enum_switch.txt
-	./$(BIN2) <entrada_wl.txt> salida_wl_2_goto.txt
-	./$(BIN3) <entrada_wl.txt> salida_wl_3_rec.txt
-	./$(BIN4) <entrada_wl.txt> salida_wl_4.txt
+
+test: $(BIN1) $(BIN2) $(BIN3) $(BIN4)
+	time ./$(BIN1) <entrada_wl_1kb.txt> salida_wl_1_enum_switch.txt
+	time ./$(BIN2) <entrada_wl_1kb.txt> salida_wl_2_goto.txt
+	time ./$(BIN3) <entrada_wl_1kb.txt> salida_wl_3_rec.txt
+	time ./$(BIN1) <entrada_wl_45kb.txt> salida_wl_1_enum_switch.txt
+	time ./$(BIN2) <entrada_wl_45kb.txt> salida_wl_2_goto.txt
+	time ./$(BIN3) <entrada_wl_45kb.txt> salida_wl_3_rec.txt
+	time ./$(BIN4) <entrada_wl_45kb.txt> salida_wl_4.txt
+	time ./$(BIN1) <entrada_wl_1mb.txt> salida_wl_1_enum_switch.txt
+	time ./$(BIN2) <entrada_wl_1mb.txt> salida_wl_2_goto.txt
+	time ./$(BIN3) <entrada_wl_1mb.txt> salida_wl_3_rec.txt
+	time ./$(BIN4) <entrada_wl_1mb.txt> salida_wl_4.txt
+	time ./$(BIN1) <entrada_wl_1gb.txt> salida_wl_1_enum_switch.txt
+	time ./$(BIN2) <entrada_wl_1gb.txt> salida_wl_2_goto.txt
+	time ./$(BIN3) <entrada_wl_1gb.txt> salida_wl_3_rec.txt
+	time ./$(BIN4) <entrada_wl_1gb.txt> salida_wl_4.txt
 
 $(BIN1): $(OBJ1)
 	$(CC) $(OBJ1) -o $(BIN1) $(CFLAGS)
