@@ -68,7 +68,7 @@ Especificar e implementar los niveles léxicos y sintácticos del lenguaje.
 
 ### Productos
 
-* `readme.md`
+* `README.md`
 * `Calc.md`
 * `Makefile`
 * `Scanner.h`
