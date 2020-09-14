@@ -3,7 +3,7 @@
 * Quién: Matias Nigliazzo
 * Cuando: 20200913
 */
-#include <stdio.h>
+
 #include "Scanner.h"
 
 
@@ -54,7 +54,6 @@ Token GetNextToken()
         return Token_INVALIDO;  
     }
   }
-  printf("FIN\n");
   return FDT;
 
 }
