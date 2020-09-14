@@ -6,56 +6,92 @@
 #include <stdio.h>
 #include "Scanner.h"
 
-
 Token GetNextToken()
 {
   int c;
   StateScanner state = INICIAL;
-  StateScanner StateAnterior=state;
+  Token tokenResultado = FDT;
   while ((c = getchar()) != EOF)
-  {  
-    if (esOperador(c))
-    {
-      state=OPERADOR;
-    }
-    else if (esNumero(c))
-    {
-      state=NUMERO;
-    }
-    else if (esVariable(c))
-    {
-      state=VARIABLE;
-    }
-    else
-    {
-      state=RECHAZO;
-    }
+  {
     switch (state)
-    {    
-      case OPERADOR:
-          return Token_OPERADOR;
-      case NUMERO:
-          if (StateAnterior==state)
-            StateAnterior=NUMERO;
-          else{
-            return Token_NUMERO;  
-          }
-          break;        
-      case VARIABLE:
-       if (StateAnterior==state){
-          StateAnterior=VARIABLE;
-        }
-        else{
-          return Token_VARIABLE;
-       }
-        break;
-      case RECHAZO:
+    {
+    case INICIAL:
+      if (esOperador(c))
+      {
+        state = OPERADOR;
+        tokenResultado = Token_OPERADOR;
+      }
+      else if (esNumero(c))
+      {
+        state = NUMERO;
+        tokenResultado = Token_NUMERO;
+      }
+      else if (esVariable(c))
+      {
+        state = VARIABLE;
+        tokenResultado = Token_VARIABLE;
+      }
+      else
+      {
+        state = RECHAZO;
         errorLexico();
-        return Token_INVALIDO;  
+        tokenResultado = Token_INVALIDO;
+      }
+      break;
+    case OPERADOR:
+      tokenResultado = Token_OPERADOR;
+    case NUMERO:
+      if (esOperador(c))
+      {
+        state = OPERADOR;
+        tokenResultado = Token_OPERADOR;
+      }
+      else if (esNumero(c))
+      {
+        state = NUMERO;
+        tokenResultado = Token_NUMERO;
+      }
+      else if (esVariable(c))
+      {
+        state = VARIABLE;
+        tokenResultado = Token_VARIABLE;
+      }
+      else
+      {
+        state = RECHAZO;
+        errorLexico();
+        tokenResultado = Token_INVALIDO;
+      }
+      break;
+    case VARIABLE:
+      if (esOperador(c))
+      {
+        state = OPERADOR;
+        return Token_OPERADOR;
+      }
+      else if (esNumero(c))
+      {
+        state = NUMERO;
+        tokenResultado = Token_NUMERO;
+      }
+      else if (esVariable(c))
+      {
+        state = VARIABLE;
+        tokenResultado = Token_VARIABLE;
+      }
+      else
+      {
+        state = RECHAZO;
+        errorLexico();
+        tokenResultado = Token_INVALIDO;
+      }
+      break;
+    case RECHAZO:
+      errorLexico();
+      tokenResultado = Token_INVALIDO;
     }
   }
-  return FDT;
-
+  return tokenResultado;
 }
 
 int esNumero(const char c){

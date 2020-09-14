@@ -15,7 +15,8 @@ typedef enum
   PARSER_INICIAL,
   PARSER_OPERADOR,
   PARSER_VARIABLE,
-  PARSER_NUMERO
+  PARSER_NUMERO,
+  PARSER_RECHAZADO
 } StateParser;
 
 Resultado parser();
