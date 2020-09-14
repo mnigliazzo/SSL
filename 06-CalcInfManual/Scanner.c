@@ -3,7 +3,7 @@
 * Quién: Matias Nigliazzo
 * Cuando: 20200913
 */
-
+#include <stdio.h>
 #include "Scanner.h"
 
 
