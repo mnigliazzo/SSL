@@ -79,5 +79,6 @@ Especificar e implementar los niveles léxicos y sintácticos del lenguaje.
 
 ## Hipótesis de trabajo que surgen luego de leer el enunciado
 
+Identificar el alcance del parser y del scanner. Y aplicar maquina de estado para resolver la funcionalidad
 
 
