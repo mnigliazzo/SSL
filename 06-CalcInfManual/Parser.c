@@ -30,7 +30,6 @@ Resultado parser()
       default:
         stateParser = PARSER_RECHAZADO;
         resultado = RECHAZADO;
-        //return resultado;
         break;
       }
       break;
@@ -38,14 +37,13 @@ Resultado parser()
     case PARSER_NUMERO:
       switch (token)
       {
-      case Token_OPERADOR:
+      case Token_SUMA:case Token_MULTIPLICADOR:
         stateParser = PARSER_OPERADOR;
         resultado = ACEPTADO;
         break;
       default:
         stateParser = PARSER_RECHAZADO;
         resultado = RECHAZADO;
-        //return resultado;
         break;
       }
       break;
@@ -63,14 +61,11 @@ Resultado parser()
       default:
         resultado = RECHAZADO;
         stateParser = PARSER_RECHAZADO;
-        // return resultado;
         break;
       }
       break;
 
     default:
-      //resultado=RECHAZADO;
-      //return resultado;
       break;
     }
   }
