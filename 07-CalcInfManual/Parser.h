@@ -36,7 +36,7 @@
 //   State estado;
 //   Pila cadpush; 
 // } StructState;
-void expresion(void);
+int expresion(void);
 
 void Match(Token);
 

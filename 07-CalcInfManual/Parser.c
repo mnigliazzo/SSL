@@ -6,6 +6,7 @@
 #include "Parser.h"
 #include "Scanner.h"
 #include <stdbool.h>
+#include <stdlib.h>
 #include <stdio.h>
 typedef enum
 {
@@ -23,16 +24,16 @@ typedef enum
   LBRACKET = 3,
   RBRACKET = 4
 } Caracter;
-void termino();
-void factor();
+int termino();
+int factor();
 
 
 
 void ErrorSintactico();
 
-void expresion(void)
+int expresion(void)
 {
-  termino();
+  int r=termino();
     //printf("%d",flagToken);
   switch (GetNextToken())
     {
@@ -40,64 +41,65 @@ void expresion(void)
       
       Match(Token_SUMA);
 
-      expresion();
-      return;
+      r=r+expresion();
+      return r;
     case Token_MULTIPLICADOR:case Token_VARIABLE:case Token_NUMERO:case Token_LBRACKET:case Token_RBRACKET:
-        return;
+        return r;
     case FDT:
     //flagToken=0; 
-      return;
+      return r;
     default:
       ErrorSintactico();
       break;
     }
 }
 
-void termino(){
-  factor();
+int termino(){
+  int r =factor();
   Token tok;
   tok=GetNextToken();
     switch (tok){    
       case Token_MULTIPLICADOR: 
  
         Match(Token_MULTIPLICADOR);
-        termino();
+        r=r*termino();
    
         break;
       case Token_SUMA:case Token_VARIABLE:case Token_NUMERO:case Token_LBRACKET:case Token_RBRACKET:
-        return;
+        return r;
       case FDT:
-        return;
+        return r;
       default:
         
         ErrorSintactico();
-        return;
+        return 0;
     }
 }
 
 
 
-void factor()
+int factor()
 {
+  int r;
   Token tok = GetNextToken();
   switch (tok)
   {
   case Token_VARIABLE:  
     Match(Token_VARIABLE);
-    break;
-  case Token_NUMERO: /* <sentencia> -> LEER ( <listaIdentificadores> ); */
 
+    return 1;// cualquier variable representa el valor 1
+  case Token_NUMERO: /* <sentencia> -> LEER ( <listaIdentificadores> ); */
     Match(Token_NUMERO);
-    break;
+    return atoi(val);
   case Token_LBRACKET: /* <sentencia> -> ESCRIBIR (<listaExpresiones>); */
     
     Match(Token_LBRACKET);
-    expresion();
+    r=expresion();
     Match(Token_RBRACKET);
-    break;
+    return r;
   default:
     ErrorSintactico();
-    break;
+    return 0;
   }
 }
 

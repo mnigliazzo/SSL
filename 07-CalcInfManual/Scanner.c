@@ -21,7 +21,7 @@ void leerTokenDigito();
 void finToken(void);
 // char* obtenerToken();
 void escribirToken(int);
-// void clean();
+ void   cleanValorToken();
 Token scanner();
 int flagToken = 0;
 char val[MAXVAL];
@@ -41,7 +41,7 @@ Token GetNextToken()
 }
 Token scanner()
 {
-
+  cleanValorToken();
   int c;
   c = getchar();
   if (isFDT(c))
@@ -207,8 +207,8 @@ void errorLexico()
   printf("Error Lexico\n");
 }
 
-// void clean(void)
-// {
-//   sp=0;
-//   val[sp]='\0';
-// }
+void   cleanValorToken()
+{
+  sp=0;
+  val[sp]='\0';
+}
