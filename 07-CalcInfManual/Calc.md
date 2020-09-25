@@ -38,7 +38,7 @@ Para el parentesis derecho, el lenguaje Regular que se debe detectar es:
 <Rracket> ::= )
 ```
 ### Maquina de Estado
-![NivelLexico](.\img\nivellexico.gv.svg)
+![NivelLexico](./img/nivellexico.gv.svg)
 
 Cuando se codifico se generaron dos estados:
 1. FDT, el cual indica que llego al ultimo caracter de la cadena
