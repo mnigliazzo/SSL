@@ -28,7 +28,7 @@ Para los Multiplicacion, el lenguaje Regular que se debe detectar es:
 <Multiplicacion> ::= *
 ```
 ### Maquina de Estado
-![NivelLexico](.\img\nivellexico.gv.svg)
+![NivelLexico](./img/nivellexico.gv.svg)
 
 Cuando se codifico se generaron dos estados:
 1. FDT, el cual indica que llego al ultimo caracter de la cadena
@@ -50,4 +50,4 @@ Para el diagrama de la maquina de estado se agrupo la suma y la multiplicación 
 
 
 ### Maquina de Estado
-![NivelSintactico](.\img\nivelsintactico.gv.svg)
+![NivelSintactico](./img/nivelsintactico.gv.svg)
