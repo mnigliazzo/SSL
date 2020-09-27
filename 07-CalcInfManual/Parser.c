@@ -31,6 +31,8 @@ int factor();
 
 void ErrorSintactico();
 
+int flagError=0;
+
 int expresion(void)
 {
   int r=termino();
@@ -40,13 +42,17 @@ int expresion(void)
     case Token_SUMA:
       
       Match(Token_SUMA);
-
       r=r+expresion();
+      if (flagError)
+        r=0;
       return r;
     case Token_MULTIPLICADOR:case Token_VARIABLE:case Token_NUMERO:case Token_LBRACKET:case Token_RBRACKET:
-        return r;
+      if (flagError)
+        r=0;
+      return r;
     case FDT:
-    //flagToken=0; 
+      if (flagError)
+        r=0;
       return r;
     default:
       ErrorSintactico();
@@ -63,11 +69,16 @@ int termino(){
  
         Match(Token_MULTIPLICADOR);
         r=r*termino();
-   
-        break;
+        if (flagError)
+          r=0;
+        return r;
       case Token_SUMA:case Token_VARIABLE:case Token_NUMERO:case Token_LBRACKET:case Token_RBRACKET:
+        if (flagError)
+          r=0;
         return r;
       case FDT:
+        if (flagError)
+          r=0;
         return r;
       default:
         
@@ -86,16 +97,23 @@ int factor()
   {
   case Token_VARIABLE:  
     Match(Token_VARIABLE);
-
-    return 1;// cualquier variable representa el valor 1
+    r=1;// cualquier variable representa el valor 1
+    if (flagError)
+      r=0;
+    return r;
   case Token_NUMERO:
     Match(Token_NUMERO);
-    return atoi(val);
+    r=atoi(val);
+    if (flagError)
+      r=0;
+    return r;
   case Token_LBRACKET:
     
     Match(Token_LBRACKET);
     r=expresion();
     Match(Token_RBRACKET);
+    if (flagError)
+      r=0;
     return r;
   default:
     ErrorSintactico();
@@ -115,6 +133,7 @@ void Match(Token t)
 void ErrorSintactico()
 {
   printf("Error Sintactico\n");
+  flagError=1;
 }
 
 

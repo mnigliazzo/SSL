@@ -13,7 +13,7 @@
 
 int main(void)
 {
-  printf("\nEl resultado es: %d",expresion());
+  printf("El resultado es: %d\n",expresion());
   Match(FDT);
 
 }
