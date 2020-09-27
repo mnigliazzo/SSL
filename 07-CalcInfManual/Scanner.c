@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <ctype.h>
-static int sp = 0; /* next free stack position */
+static int sp = 0;
 void errorLexico();
 bool isPlus(const int);
 bool isMultiplication(const int);

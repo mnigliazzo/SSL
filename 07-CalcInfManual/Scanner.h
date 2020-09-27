@@ -27,10 +27,8 @@ extern int flagToken;
 Token GetNextToken(); // Devuelve el tipo de token que encuentra
 extern Token tokenActual;
 #define MAXVAL 100
-extern char val[MAXVAL]; /* value stack */
+extern char val[MAXVAL];
 
 
-
-// void printToken(); 
 
 #endif

@@ -50,7 +50,7 @@ int expresion(void)
       return r;
     default:
       ErrorSintactico();
-      break;
+      return 0;
     }
 }
 
@@ -88,10 +88,10 @@ int factor()
     Match(Token_VARIABLE);
 
     return 1;// cualquier variable representa el valor 1
-  case Token_NUMERO: /* <sentencia> -> LEER ( <listaIdentificadores> ); */
+  case Token_NUMERO:
     Match(Token_NUMERO);
     return atoi(val);
-  case Token_LBRACKET: /* <sentencia> -> ESCRIBIR (<listaExpresiones>); */
+  case Token_LBRACKET:
     
     Match(Token_LBRACKET);
     r=expresion();
@@ -106,18 +106,10 @@ int factor()
 
 void Match(Token t)
 {
-  if ( !(t == GetNextToken()) )
+  if ( !(t == GetNextToken()))
      ErrorSintactico();
   flagToken = 0;
-
 }
-
-
-// void repararErrorSintactico();
-
-// void repararErrorSintactico(){
-
-// }
 
 
 void ErrorSintactico()
