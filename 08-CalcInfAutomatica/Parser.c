@@ -44,18 +44,15 @@ void listaSentencia(){
   while (1) {
     switch (GetNextToken()) {
       case Token_VARIABLE:
-        //printf("otra variable");
         sentencia();
         break;
       case Token_CALCULO:
         Match(Token_CALCULO);
-       // printf("calculo");
         resultado=expresion();
         if (flagError)
           resultado=0;
         return;
       default:
-      //  printf(" es otra coas");
         return;
     }
   }
@@ -73,12 +70,9 @@ void sentencia(){
     Match(Token_ASIGNACION);
     Match(Token_NUMERO);
     numero=atoi(val);
-   // printf("%d",atoi(val));
-   // printf("%s",val);
     agregarTablaSimbolos(variable,numero);
     return;
   default:
-    //printf("no es sentencias");
     return;
   }
 }
@@ -86,60 +80,31 @@ void sentencia(){
 int expresion(void)
 {
   int r=termino();
-    //printf("%d",flagToken);
   switch (GetNextToken())
     {
-    case Token_SUMA:
-      
+    case Token_SUMA:   
       Match(Token_SUMA);
-      r=r+      expresion();
-      //sumar();
-      if (flagError)
-        r=0;
-      return r;
-    case Token_MULTIPLICADOR:case Token_VARIABLE:case Token_NUMERO:case Token_LBRACKET:case Token_RBRACKET:
-      if (flagError)
-        r=0;
-      return r;
-    case FDT:
-      if (flagError)
-        r=0;
+      
+      r=r+ expresion();
       return r;
     default:
-  //    ErrorSintactico();
-        r=0;
+      
       return r;
     }
 }
 
 int termino(){
   int r =factor();
-  while(1){
   Token tok;
   tok=GetNextToken();
     switch (tok){    
       case Token_MULTIPLICADOR: 
- 
         Match(Token_MULTIPLICADOR);
         r=r*termino();
-        //multiplicar();
-        if (flagError)
-          r=0;
-        return r;
-      case Token_SUMA:case Token_VARIABLE:case Token_NUMERO:case Token_LBRACKET:case Token_RBRACKET:
-        if (flagError)
-          r=0;
-        return r;
-      case FDT:
-        if (flagError)
-          r=0;
         return r;
       default:
-        
-       // ErrorSintactico();
         return r;
     }
-  }
 }
 
 
@@ -153,26 +118,19 @@ int factor()
   case Token_VARIABLE:  
     Match(Token_VARIABLE);
     r=buscarTablaSimbolos(val);
-  //  r=1;// cualquier variable representa el valor 1
-    if (flagError)
-      r=0;
     return r;
   case Token_NUMERO:
     Match(Token_NUMERO);
     r=atoi(val);
-    if (flagError)
-      r=0;
     return r;
   case Token_LBRACKET:
     
     Match(Token_LBRACKET);
     r=expresion();
     Match(Token_RBRACKET);
-    if (flagError)
-      r=0;
     return r;
   default:
-   // ErrorSintactico();
+    ErrorSintactico();     
     return r;
   }
 }
@@ -189,11 +147,11 @@ void Match(Token t)
 void ErrorSintactico()
 {
   printf("Error Sintactico\n");
+  resultado=0;
   flagError=1;
 }
 
 void agregarTablaSimbolos(char nombre[MAXVAL],int valor){
-  //printf("%s %d\n\n",nombre,2);
   for(int i=0;i<id_TablaSimbolos;i++){
     if(strcmp(TablaSimbolos[i].variable,nombre)==0)
     {
@@ -201,12 +159,8 @@ void agregarTablaSimbolos(char nombre[MAXVAL],int valor){
       return;
     }
   }
-  // printf("%s",TablaSimbolos[id_TablaSimbolos].variable);
-  // printf("%d",TablaSimbolos[id_TablaSimbolos].valor); 
   strcpy(TablaSimbolos[id_TablaSimbolos].variable,nombre);
   TablaSimbolos[id_TablaSimbolos].valor=valor;
-  // printf("%s",TablaSimbolos[id_TablaSimbolos].variable);
-  // printf("%d",TablaSimbolos[id_TablaSimbolos].valor); 
   id_TablaSimbolos++;
 }
 
@@ -216,10 +170,7 @@ int buscarTablaSimbolos(char nombre[MAXVAL]){
   for(int i=0;i<id_TablaSimbolos;i++){
     if(strcmp(TablaSimbolos[i].variable,nombre)==0)
     {
-   //  printf("%s",TablaSimbolos[i].variable);
-      valorRetorno= TablaSimbolos[i].valor;
-   //   printf("%d\n",valorRetorno);
-      
+      valorRetorno= TablaSimbolos[i].valor;     
       return valorRetorno;
     }
   }
