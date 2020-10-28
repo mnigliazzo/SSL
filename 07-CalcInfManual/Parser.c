@@ -107,6 +107,7 @@ int expresion(void)
       return r;
     default:
   //    ErrorSintactico();
+      r=0;
       return r;
     }
 }

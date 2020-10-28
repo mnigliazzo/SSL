@@ -11,6 +11,7 @@ int flagToken = 0;
 char val[MAXVAL];
 Token tokenActual;
 Token GetNextToken();
+int fileno( FILE * stream );
 %}
 
 %option noyywrap
@@ -36,6 +37,14 @@ Token GetNextToken();
 \+ {
           strcpy(val,yytext);
           return Token_SUMA;
+          }
+\$ {
+          strcpy(val,yytext);
+          return Token_CALCULO;
+          }
+\= {
+          strcpy(val,yytext);
+          return Token_ASIGNACION;
           }
 [a-zA-Z_][a-zA-Z0-9_]* {
           strcpy(val,yytext);

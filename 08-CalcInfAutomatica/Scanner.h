@@ -7,6 +7,9 @@
 #define scanner_h_
 
 
+
+
+
 typedef enum{
     Token_MULTIPLICADOR,
     Token_SUMA,
@@ -15,13 +18,15 @@ typedef enum{
     Token_LBRACKET,
     Token_RBRACKET,
     Token_ERRORLEXICO,
+    Token_ASIGNACION,
+    Token_CALCULO,
     FDT
 } Token;
 
 
 
 extern int flagToken;
-extern Token GetNextToken(); // Devuelve el tipo de token que encuentra
+Token GetNextToken(); // Devuelve el tipo de token que encuentra
 extern Token tokenActual;
 #define MAXVAL 100
 extern char val[MAXVAL];

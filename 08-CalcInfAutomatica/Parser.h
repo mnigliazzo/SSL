@@ -7,7 +7,8 @@
 #define parser_h_
 #include "Scanner.h"
 
-int expresion(void);
+void parser(void);
+extern int resultado;
 
 void Match(Token);
 
