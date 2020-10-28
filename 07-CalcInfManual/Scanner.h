@@ -18,6 +18,8 @@ typedef enum{
     Token_LBRACKET,
     Token_RBRACKET,
     Token_ERRORLEXICO,
+    Token_ASIGNACION,
+    Token_CALCULO,
     FDT
 } Token;
 

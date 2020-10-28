@@ -8,22 +8,23 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
-typedef enum
-{
-  PARSER_OPERADOR,
-  PARSER_VARIABLE,
-  PARSER_NUMERO,
-  PARSER_RECHAZADO
-} StateParser;
+#include <string.h>
 
-typedef enum
-{
-  NUMERO = 0,
-  OPERADOR = 2,
-  VARIABLE = 1,
-  LBRACKET = 3,
-  RBRACKET = 4
-} Caracter;
+typedef struct {
+    char variable[MAXVAL];;
+    int valor;
+}Simbolos;
+
+int resultado=0;
+Simbolos TablaSimbolos[MAXVAL];
+int id_TablaSimbolos=0;
+
+void agregarTablaSimbolos(char [],int);
+int buscarTablaSimbolos(char []);
+void parser();
+void listaSentencia();
+void sentencia();
+int expresion();
 int termino();
 int factor();
 
@@ -32,6 +33,55 @@ int factor();
 void ErrorSintactico();
 
 int flagError=0;
+
+void parser (void){
+  return listaSentencia();
+}
+
+void listaSentencia(){
+  int r ; 
+  sentencia();
+  while (1) {
+    switch (GetNextToken()) {
+      case Token_VARIABLE:
+        //printf("otra variable");
+        sentencia();
+        break;
+      case Token_CALCULO:
+        Match(Token_CALCULO);
+       // printf("calculo");
+        resultado=expresion();
+        if (flagError)
+          resultado=0;
+        return;
+      default:
+      //  printf(" es otra coas");
+        return;
+    }
+  }
+}
+
+void sentencia(){
+  char variable[100];
+  int numero;
+  switch (GetNextToken())
+  {
+  case Token_VARIABLE:
+
+    Match(Token_VARIABLE);
+    strcpy(variable,val);
+    Match(Token_ASIGNACION);
+    Match(Token_NUMERO);
+    numero=atoi(val);
+   // printf("%d",atoi(val));
+   // printf("%s",val);
+    agregarTablaSimbolos(variable,numero);
+    return;
+  default:
+    //printf("no es sentencias");
+    return;
+  }
+}
 
 int expresion(void)
 {
@@ -42,7 +92,8 @@ int expresion(void)
     case Token_SUMA:
       
       Match(Token_SUMA);
-      r=r+expresion();
+      r=r+      expresion();
+      //sumar();
       if (flagError)
         r=0;
       return r;
@@ -55,13 +106,14 @@ int expresion(void)
         r=0;
       return r;
     default:
-      ErrorSintactico();
-      return 0;
+  //    ErrorSintactico();
+      return r;
     }
 }
 
 int termino(){
   int r =factor();
+  while(1){
   Token tok;
   tok=GetNextToken();
     switch (tok){    
@@ -69,6 +121,7 @@ int termino(){
  
         Match(Token_MULTIPLICADOR);
         r=r*termino();
+        //multiplicar();
         if (flagError)
           r=0;
         return r;
@@ -82,9 +135,10 @@ int termino(){
         return r;
       default:
         
-        ErrorSintactico();
-        return 0;
+       // ErrorSintactico();
+        return r;
     }
+  }
 }
 
 
@@ -97,7 +151,8 @@ int factor()
   {
   case Token_VARIABLE:  
     Match(Token_VARIABLE);
-    r=1;// cualquier variable representa el valor 1
+    r=buscarTablaSimbolos(val);
+  //  r=1;// cualquier variable representa el valor 1
     if (flagError)
       r=0;
     return r;
@@ -116,8 +171,8 @@ int factor()
       r=0;
     return r;
   default:
-    ErrorSintactico();
-    return 0;
+   // ErrorSintactico();
+    return r;
   }
 }
 
@@ -136,4 +191,37 @@ void ErrorSintactico()
   flagError=1;
 }
 
+void agregarTablaSimbolos(char nombre[MAXVAL],int valor){
+  //printf("%s %d\n\n",nombre,2);
+  for(int i=0;i<id_TablaSimbolos;i++){
+    if(strcmp(TablaSimbolos[i].variable,nombre)==0)
+    {
+      TablaSimbolos[i].valor=valor;
+      return;
+    }
+  }
+  // printf("%s",TablaSimbolos[id_TablaSimbolos].variable);
+  // printf("%d",TablaSimbolos[id_TablaSimbolos].valor); 
+  strcpy(TablaSimbolos[id_TablaSimbolos].variable,nombre);
+  TablaSimbolos[id_TablaSimbolos].valor=valor;
+  // printf("%s",TablaSimbolos[id_TablaSimbolos].variable);
+  // printf("%d",TablaSimbolos[id_TablaSimbolos].valor); 
+  id_TablaSimbolos++;
+}
 
+
+int buscarTablaSimbolos(char nombre[MAXVAL]){
+  int valorRetorno;
+  for(int i=0;i<id_TablaSimbolos;i++){
+    if(strcmp(TablaSimbolos[i].variable,nombre)==0)
+    {
+   //  printf("%s",TablaSimbolos[i].variable);
+      valorRetorno= TablaSimbolos[i].valor;
+   //   printf("%d\n",valorRetorno);
+      
+      return valorRetorno;
+    }
+  }
+  printf("\n************Variable No Declarada*****************\n");
+  return 0;
+}

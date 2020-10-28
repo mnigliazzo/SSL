@@ -11,9 +11,12 @@
 
 
 
-int main(void)
+int main()
 {
-  printf("El resultado es: %d\n",expresion());
+  parser();
+  //printf("El resultado es: %d\n",parser());
   Match(FDT);
+
+  printf("\nResultado: %d",resultado);
 
 }

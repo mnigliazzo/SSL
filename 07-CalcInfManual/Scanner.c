@@ -16,6 +16,8 @@ bool isMultiplication(const int);
 bool isFDT(const int);
 bool isRBracket(const int);
 bool isLBracket(const int);
+bool isEqual(const int);
+bool isCalculo(const int);
 void leerTokenVariable();
 void leerTokenDigito();
 void finToken(void);
@@ -46,6 +48,8 @@ Token scanner()
   c = getchar();
   if (isFDT(c))
   {
+    escribirToken(c);
+    leerTokenVariable();
     return FDT;
   }
   else if (isalpha(c))
@@ -88,6 +92,18 @@ Token scanner()
   {
     GetNextToken();
   }
+  else if (isEqual(c))
+  {
+    escribirToken(c);
+    finToken();
+    return Token_ASIGNACION;
+  }
+  else if (isCalculo(c))
+  {
+    escribirToken(c);
+    finToken();
+    return Token_CALCULO;
+  }
   else
   {
     errorLexico();
@@ -95,6 +111,18 @@ Token scanner()
   }
 }
 
+bool isEqual (const int c)
+{
+  if (c == '=')
+    return true;
+  return false;
+}
+bool isCalculo(const int c)
+{
+  if (c == '$')
+    return true;
+  return false;
+}
 bool isMultiplication(const int c)
 {
   if (c == '*')
