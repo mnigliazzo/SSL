@@ -83,10 +83,8 @@ int expresion(void)
   switch (GetNextToken())
     {
     case Token_SUMA:   
-      Match(Token_SUMA);
-      
-      r=r+ expresion();
-      return r;
+      Match(Token_SUMA);   
+      return r+=expresion();;
     default:
       
       return r;

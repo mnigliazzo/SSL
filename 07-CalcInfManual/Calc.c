@@ -15,7 +15,7 @@ int main()
 {
   parser();
   //printf("El resultado es: %d\n",parser());
-   Match(FDT);
+  Match(FDT);
 
   printf("\nResultado: %d",resultado);
 
