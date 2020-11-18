@@ -34,17 +34,14 @@ static int yylex();
 %type <intVal> expresion
 %type <intVal> termino
 %type <intVal> factor
-%type <intVal> sentenciaOpcional
 %type <intVal> listaSentencia
 %type <intVal> programa
 
 %%
 programa: listaSentencia FDT;
 
-listaSentencia: sentencia sentenciaOpcional;
-
-sentenciaOpcional: 
-  | sentencia;
+listaSentencia: sentencia 
+  | listaSentencia sentencia;
 
 sentencia: Token_VARIABLE Token_ASIGNACION Token_NUMERO {agregarTablaSimbolos($1,$3); }
   | Token_CALCULO expresion {printf("El resultado es: %d\n", $2);};
