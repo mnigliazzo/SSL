@@ -3,13 +3,6 @@
 * Quién: Matias Nigliazzo
 * Cuando: 20200913
 */
-#ifndef parser_h_
-#define parser_h_
-#include "Scanner.h"
+#pragma once
 
 void parser(void);
-extern int resultado;
-
-void Match(Token);
-
-#endif

@@ -19,7 +19,8 @@ A diferencia de la anterior resolución, el scanner se realiza con flex. A parti
 
 Para el nivel sintactico se generó el siguiente autómata:
 ```
-<listaSentencia>::=  <sentencia> {sentencia}
+<programa> ::= <listaSentencia> FDT
+<listaSentencia>::=  <sentencia> | <listaSentencia> <sentencia>
 <sentencia>::= <identificador> = <expresion> | <expresion>
 <expresion>::=  <termino> | <expresion> + <termino>
 <termino> ::= <factor> |  <factor> * <termino>

@@ -1,6 +1,6 @@
-SOURCE = Calc.c Scanner.c Parser.c
+SOURCE = Calc.c Scanner.c Parser.c  Evaluar.c TablaSimbolos.c
 BIN = Calc.exe
-OBJ = Calc.o Scanner.o Parser.o
+OBJ = Calc.o Scanner.o Parser.o  Evaluar.o TablaSimbolos.o
 CC = gcc
 CFLAGS = -std=c18 -g
 RM = rm -f

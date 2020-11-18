@@ -1,6 +1,6 @@
-SOURCE = Calc.c Scanner.c Parser.c
+SOURCE = Calc.c Scanner.c Parser.c Evaluar.c TablaSimbolos.c
 BIN = Calc.exe
-OBJ = Calc.o Scanner.o Parser.o
+OBJ = Calc.o Scanner.o Parser.o Evaluar.o TablaSimbolos.o
 FLEXL = scanner.l
 FLEXC =Scanner.c
 CC = gcc
