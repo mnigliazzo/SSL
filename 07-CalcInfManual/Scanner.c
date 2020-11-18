@@ -51,7 +51,6 @@ TipoToken scanner()
   if (isFDT(c))
   {
     escribirToken(c);
-    leerTokenVariable();
     return FDT;
   }
   else if (isalpha(c))
