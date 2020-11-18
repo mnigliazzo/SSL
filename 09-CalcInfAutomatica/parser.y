@@ -29,7 +29,7 @@ static int yylex();
 %token <strVal> Token_ASIGNACION
 %token <strVal> Token_ERRORLEXICO
 %token <strVal> Token_CALCULO
-%token <strVal> FDT
+%token <strVal> FDT 0
 %type <intVal> sentencia
 %type <intVal> expresion
 %type <intVal> termino

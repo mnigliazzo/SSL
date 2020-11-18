@@ -39,6 +39,7 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
+     FDT = 0,
      Token_MULTIPLICADOR = 258,
      Token_SUMA = 259,
      Token_VARIABLE = 260,
@@ -47,8 +48,7 @@
      Token_RBRACKET = 263,
      Token_ASIGNACION = 264,
      Token_ERRORLEXICO = 265,
-     Token_CALCULO = 266,
-     FDT = 267
+     Token_CALCULO = 266
    };
 #endif
 
