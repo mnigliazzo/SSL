@@ -8,9 +8,9 @@
 static int sp = 0;
 void errorLexico();
 int flagToken = 0;
-char val[MAXVAL];
-Token tokenActual;
-Token GetNextToken();
+char lexema[MAXVAL];
+TipoToken tokenActual;
+TipoToken GetNextToken();
 int fileno( FILE * stream );
 %}
 
@@ -18,36 +18,36 @@ int fileno( FILE * stream );
 %%
 
 [0-9]+ {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return (Token_NUMERO);
           }
 \( {
 
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_LBRACKET;
           }
 \) {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_RBRACKET;
           }
 \* {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_MULTIPLICADOR;
           }
 \+ {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_SUMA;
           }
 \$ {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_CALCULO;
           }
 \= {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_ASIGNACION;
           }
 [a-zA-Z_][a-zA-Z0-9_]* {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_VARIABLE;
           }
 <<EOF>> { return FDT; }
@@ -64,7 +64,7 @@ int fileno( FILE * stream );
 */
 
 
-Token GetNextToken()
+TipoToken GetNextToken()
 {
 
   if (!flagToken) //si es 0

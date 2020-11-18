@@ -66,10 +66,10 @@ void sentencia(){
         return;
   case Token_VARIABLE:
     Match(Token_VARIABLE);
-    strcpy(variable,val);
+    strcpy(variable,lexema);
     Match(Token_ASIGNACION);
     Match(Token_NUMERO);
-    numero=atoi(val);
+    numero=atoi(lexema);
     agregarTablaSimbolos(variable,numero);
     return;
   default:
@@ -93,7 +93,7 @@ int expresion(void)
 
 int termino(){
   int r =factor();
-  Token tok;
+  TipoToken tok;
   tok=GetNextToken();
     switch (tok){    
       case Token_MULTIPLICADOR: 
@@ -110,16 +110,16 @@ int termino(){
 int factor()
 {
   int r;
-  Token tok = GetNextToken();
+  TipoToken tok = GetNextToken();
   switch (tok)
   {
   case Token_VARIABLE:  
     Match(Token_VARIABLE);
-    r=buscarTablaSimbolos(val);
+    r=buscarTablaSimbolos(lexema);
     return r;
   case Token_NUMERO:
     Match(Token_NUMERO);
-    r=atoi(val);
+    r=atoi(lexema);
     return r;
   case Token_LBRACKET:
     
@@ -134,7 +134,7 @@ int factor()
 }
 
 
-void Match(Token t)
+void Match(TipoToken t)
 {
   if ( !(t == GetNextToken()))
      ErrorSintactico();

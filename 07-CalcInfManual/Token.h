@@ -11,8 +11,8 @@ typedef enum{
     Token_ASIGNACION,
     Token_CALCULO,
     FDT
-} Token;
+} TipoToken;
 
 
 #define MAXVAL 100
-extern char val[MAXVAL];
+extern char lexema[MAXVAL];

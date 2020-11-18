@@ -7,5 +7,5 @@
 #include "Token.h"
 
 extern int flagToken;
-Token GetNextToken(); // Devuelve el tipo de token que encuentra
-extern Token tokenActual;
+TipoToken GetNextToken(); // Devuelve el tipo de token que encuentra
+extern TipoToken tokenActual;

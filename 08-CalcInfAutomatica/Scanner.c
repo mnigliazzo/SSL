@@ -381,9 +381,9 @@ char *yytext;
 static int sp = 0;
 void errorLexico();
 int flagToken = 0;
-char val[MAXVAL];
-Token tokenActual;
-Token GetNextToken();
+char lexema[MAXVAL];
+TipoToken tokenActual;
+TipoToken GetNextToken();
 int fileno( FILE * stream );
 #line 389 "Scanner.c"
 
@@ -626,7 +626,7 @@ case 1:
 YY_RULE_SETUP
 #line 20 "scanner.l"
 {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return (Token_NUMERO);
           }
 	YY_BREAK
@@ -635,7 +635,7 @@ YY_RULE_SETUP
 #line 24 "scanner.l"
 {
 
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_LBRACKET;
           }
 	YY_BREAK
@@ -643,7 +643,7 @@ case 3:
 YY_RULE_SETUP
 #line 29 "scanner.l"
 {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_RBRACKET;
           }
 	YY_BREAK
@@ -651,7 +651,7 @@ case 4:
 YY_RULE_SETUP
 #line 33 "scanner.l"
 {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_MULTIPLICADOR;
           }
 	YY_BREAK
@@ -659,7 +659,7 @@ case 5:
 YY_RULE_SETUP
 #line 37 "scanner.l"
 {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_SUMA;
           }
 	YY_BREAK
@@ -667,7 +667,7 @@ case 6:
 YY_RULE_SETUP
 #line 41 "scanner.l"
 {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_CALCULO;
           }
 	YY_BREAK
@@ -675,7 +675,7 @@ case 7:
 YY_RULE_SETUP
 #line 45 "scanner.l"
 {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_ASIGNACION;
           }
 	YY_BREAK
@@ -683,7 +683,7 @@ case 8:
 YY_RULE_SETUP
 #line 49 "scanner.l"
 {
-          strcpy(val,yytext);
+          strcpy(lexema,yytext);
           return Token_VARIABLE;
           }
 	YY_BREAK
@@ -1601,7 +1601,7 @@ int main()
 */
 
 
-Token GetNextToken()
+TipoToken GetNextToken()
 {
 
   if (!flagToken) //si es 0

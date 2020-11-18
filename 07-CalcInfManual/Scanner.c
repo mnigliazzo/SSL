@@ -21,14 +21,13 @@ bool isCalculo(const int);
 void leerTokenVariable();
 void leerTokenDigito();
 void finToken(void);
-// char* obtenerToken();
 void escribirToken(int);
- void   cleanValorToken();
-Token scanner();
+void cleanLexema();
+TipoToken scanner();
 int flagToken = 0;
-char val[MAXVAL];
-Token tokenActual;
-Token GetNextToken()
+char lexema[MAXVAL];
+TipoToken tokenActual;
+TipoToken GetNextToken()
 {
 
   if (!flagToken) //si es 0
@@ -41,9 +40,9 @@ Token GetNextToken()
   }
   return tokenActual;
 }
-Token scanner()
+TipoToken scanner()
 {
-  cleanValorToken();
+  cleanLexema();
   int c;
   c = getchar();
   if (isFDT(c))
@@ -212,7 +211,7 @@ void escribirToken(int c)
 {
 
   if (sp < MAXVAL)
-    val[sp++] = c;
+    lexema[sp++] = c;
   return;
 }
 
@@ -220,7 +219,7 @@ char *obtenerToken()
 {
 
   char *r;
-  r = val;
+  r = lexema;
 
   return r;
 }
@@ -235,8 +234,8 @@ void errorLexico()
   printf("Error Lexico\n");
 }
 
-void   cleanValorToken()
+void cleanLexema()
 {
   sp=0;
-  val[sp]='\0';
+  lexema[sp]='\0';
 }
