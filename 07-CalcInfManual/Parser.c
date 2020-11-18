@@ -136,9 +136,9 @@ int factor()
 
 void Match(TipoToken t)
 {
-  if ( !(t == GetNextToken()))
+  if ( !(t == GetNextToken())) // si el proximo token no coincide con el que deberia coincidir da error Sintactico
      ErrorSintactico();
-  flagToken = 0;
+  flagToken = 0; // permite que getNextToken siga capturando tokens
 }
 
 

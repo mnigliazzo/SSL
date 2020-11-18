@@ -27,16 +27,19 @@ TipoToken scanner();
 int flagToken = 0;
 char lexema[MAXVAL];
 TipoToken tokenActual;
+
+// hasta que no se llame a match, GetNextToken no devolvera el proximo token  si no el token que habia en encontrado. es para los casos de las funciones PAS que hacen GetNextToken y puede que no sea un token valido no siga consumiento tokens hasta que no matchee y asi puede consumir todos los tokens.
+
 TipoToken GetNextToken()
 {
 
   if (!flagToken) //si es 0
-  {
+  { // busca el token de stdin cuando matchea
 
     tokenActual = scanner();
     if (tokenActual == Token_ERRORLEXICO)
       errorLexico();
-    flagToken = 1;
+    flagToken = 1;  
   }
   return tokenActual;
 }
