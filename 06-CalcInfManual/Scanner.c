@@ -4,8 +4,16 @@
 * Cuando: 20200913
 */
 #include <stdio.h>
-
+#include <stdbool.h>
+#include  <ctype.h> 
 #include "Scanner.h"
+
+bool isPlus(const int);
+bool isMultiplication(const int);
+bool isFDT (const int);
+void leerTokenVariable();
+void leerTokenDigito();
+void errorLexico();
 
 Token GetNextToken()
 {

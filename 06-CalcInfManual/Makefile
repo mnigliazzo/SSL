@@ -9,11 +9,12 @@ $(BIN): $(OBJ)
 	$(CC) $(OBJ) -o $(BIN) $(CFLAGS)
 
 run: $(BIN)
-	$(BIN)
+	./$(BIN) <Calc_in.txt> Calc_out.txt
 
 $(OBJ): $(SOURCE)
 	$(CC) -c $(SOURCE) $(CFLAGS)
 
+all: clean $(BIN) run
 .PHONY: clean
 clean:
 	$(RM) $(OBJ) $(BIN)
