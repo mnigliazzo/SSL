@@ -78,7 +78,7 @@
   #include "TablaSimbolos.h"
 
 
-void yyerror(char const *s){printf ("Error en el Parser: %s\n", s);}
+void yyerror(char const *s){printf ("Error en el Parser: %s\n", s);} // cuando yyparser detecta un error sintacto hace uso de yyerror, por lo cual es necesario declararla
 
 static int yylex();
   
@@ -135,7 +135,7 @@ typedef union YYSTYPE
 
 /* Line 214 of yacc.c  */
 #line 18 "parser.y"
-
+ //declara los tipos de valores de los token para el analisis semantico
   int intVal;
   char strVal[100];
 

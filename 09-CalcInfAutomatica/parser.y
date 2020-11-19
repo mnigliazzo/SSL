@@ -7,7 +7,7 @@
   #include "TablaSimbolos.h"
 
 
-void yyerror(char const *s){printf ("Error en el Parser: %s\n", s);}
+void yyerror(char const *s){printf ("Error en el Parser: %s\n", s);} // cuando yyparser detecta un error sintacto hace uso de yyerror, por lo cual es necesario declararla
 
 static int yylex();
   
@@ -15,7 +15,7 @@ static int yylex();
 
 %}
 
-%union {
+%union { //declara los tipos de valores de los token para el analisis semantico
   int intVal;
   char strVal[100];
 }
@@ -29,7 +29,7 @@ static int yylex();
 %token <strVal> Token_ASIGNACION
 %token <strVal> Token_ERRORLEXICO
 %token <strVal> Token_CALCULO
-%token <strVal> FDT 0
+%token <strVal> FDT 0 // es necesario darle el valor cero para indicar que es el token de EOF
 %type <intVal> sentencia
 %type <intVal> expresion
 %type <intVal> termino

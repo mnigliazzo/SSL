@@ -378,14 +378,13 @@ char *yytext;
 #include <stdbool.h>
 #include <ctype.h>
 
-static int sp = 0;
 void errorLexico();
 int flagToken = 0;
 char lexema[MAXVAL];
 TipoToken tokenActual;
 TipoToken GetNextToken();
-int fileno( FILE * stream );
-#line 389 "Scanner.c"
+int fileno( FILE * stream ); //defino impricitamente el prototipo ya que al no ser un funcion estandard de c, y scanner hace uso de esta funcion (devuelve el descriptor del archivo)
+#line 388 "Scanner.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -536,10 +535,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 18 "scanner.l"
+#line 17 "scanner.l"
 
 
-#line 543 "Scanner.c"
+#line 542 "Scanner.c"
 
 	if ( yy_init )
 		{
@@ -624,7 +623,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 20 "scanner.l"
+#line 19 "scanner.l"
 {
           strcpy(lexema,yytext);
           return (Token_NUMERO);
@@ -632,7 +631,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 24 "scanner.l"
+#line 23 "scanner.l"
 {
 
           strcpy(lexema,yytext);
@@ -641,7 +640,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 29 "scanner.l"
+#line 28 "scanner.l"
 {
           strcpy(lexema,yytext);
           return Token_RBRACKET;
@@ -649,7 +648,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 33 "scanner.l"
+#line 32 "scanner.l"
 {
           strcpy(lexema,yytext);
           return Token_MULTIPLICADOR;
@@ -657,7 +656,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 37 "scanner.l"
+#line 36 "scanner.l"
 {
           strcpy(lexema,yytext);
           return Token_SUMA;
@@ -665,7 +664,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 41 "scanner.l"
+#line 40 "scanner.l"
 {
           strcpy(lexema,yytext);
           return Token_CALCULO;
@@ -673,7 +672,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 45 "scanner.l"
+#line 44 "scanner.l"
 {
           strcpy(lexema,yytext);
           return Token_ASIGNACION;
@@ -681,32 +680,32 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 49 "scanner.l"
+#line 48 "scanner.l"
 {
           strcpy(lexema,yytext);
           return Token_VARIABLE;
           }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 53 "scanner.l"
+#line 52 "scanner.l"
 { return FDT; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 54 "scanner.l"
+#line 53 "scanner.l"
 ;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 55 "scanner.l"
+#line 54 "scanner.l"
 {errorLexico();return Token_ERRORLEXICO;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 57 "scanner.l"
+#line 56 "scanner.l"
 ECHO;
 	YY_BREAK
-#line 710 "Scanner.c"
+#line 709 "Scanner.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1590,7 +1589,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 57 "scanner.l"
+#line 56 "scanner.l"
 
 
 

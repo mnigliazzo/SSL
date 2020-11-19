@@ -5,13 +5,12 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-static int sp = 0;
 void errorLexico();
 int flagToken = 0;
 char lexema[MAXVAL];
 TipoToken tokenActual;
 TipoToken GetNextToken();
-int fileno( FILE * stream );
+int fileno( FILE * stream ); //defino impricitamente el prototipo ya que al no ser un funcion estandard de c, y scanner hace uso de esta funcion (devuelve el descriptor del archivo)
 %}
 
 %option noyywrap

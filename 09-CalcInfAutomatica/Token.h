@@ -60,7 +60,7 @@ typedef union YYSTYPE
 
 /* Line 1676 of yacc.c  */
 #line 18 "parser.y"
-
+ //declara los tipos de valores de los token para el analisis semantico
   int intVal;
   char strVal[100];
 
